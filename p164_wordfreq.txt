@@ -1,0 +1,7 @@
+Microsoft has pledged that Windows 10 will eventually run the bulk of Linux software used by developers.
+
+The firm recently updated Windows 10 to let users run a range of Linux tools from inside the OS.
+
+In what appears to be an attempt by Microsoft to woo developers using Linux-based OSes and Mac OS X, the firm has said it will continue to improve Windows 10's support for Linux command-line tools.
+
+"We're not done yet. We have a long way to go yet until we can fully say that this thing is really comprehensibly compatible with the majority of the tools that you want to use," said Rich Turner, senior program manager at Microsoft, in a recent update.
