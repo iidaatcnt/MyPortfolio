@@ -1,0 +1,8 @@
+#requires 'Mail::Sendmail';
+#requires 'pmtools';
+requires 'LWP::Protocol::https';
+requires 'WWW::Mechanize';
+#requires 'Net::SSLeay';
+requires 'IO::Socket::SSL';
+#requires 'Crypt::SSLeay';
+requires 'Data::Dumper';
