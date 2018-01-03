@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+body {
+  font-size: 14px;
+  font-family: Verdana, sans-serif;
+}
+
+#open, #close {
+  cursor: pointer;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 40px;
+  margin: 15px auto 0;
+}
