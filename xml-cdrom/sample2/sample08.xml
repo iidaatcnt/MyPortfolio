@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml-stylesheet type="text/xsl" href="sample08.xsl"?>
+<全体>
+	<題名>Sample08</題名>
+	<本文>
+		<リスト>
+			<項目>一項目目の内容です．</項目>
+			<項目>二項目目の内容です．</項目>
+			<項目>三項目目の内容です．</項目>
+		</リスト>
+	</本文>
+</全体>
+

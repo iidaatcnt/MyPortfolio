@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html lang="ja">
+<head>
+<title>sample45</title>
+<style type="text/css">
+<!--
+td{font-family:"ＭＳ Ｐ明朝",serif;font-size:12pt;padding:5;}
+th{background-color:aquamarine;padding:5;}
+-->
+</style>
+</head>
+<body>
+
+<div>
+<img id="image1" src="silver_map1.gif" style="position:absolute;boder-width:2">
+<div id="maru" style="position:absolute;color:red">●</div>
+<img id="personalimage" style="position:absolute;visibility:hidden"></img>
+<span style="position:absolute;margin-top:10;margin-left:500;font-size:12pt;font-weight:bold;">ヘルパー訪問先(高齢者氏名)</span>
+<div id="text1" style="padding:5;font-family:ＭＳ Ｐゴシック;font-size:12pt;line-height:15pt;position:absolute;border-width:2;border-style:inset;width:200;height:80;overflow:auto;margin-top:30;margin-left:500"></div>
+</div>
+
+<div>
+<span style="position:absolute;margin-top:130;margin-left:500;font-size:12pt;font-weight:bold;">家族情報</span>
+<table id="mytable" style="padding:5;position:absolute;margin-top:150;margin-left:500" border="1"></table>
+</div>
+
+<div>
+<span style="position:absolute;margin-top:330;margin-left:10;font-size:12pt;font-weight:bold;">本人詳細情報</span>
+<table border="2" width="85%" style="position:absolute;border-width:2;border-style:inset;margin-top:350;margin-left:10">
+<thead style="background-color:lightpink;text-align:center">
+	<tr><td>年齢</td><td>住所</td><td>内容</td><td>受診科</td><td>既往症</td><td>血液型</td><td>担当ヘルパー</td></tr>
+</thead>
+<tbody>
+	<tr>
+		<td><span id="age"></span></td>
+		<td><span id="address"></span></td>
+		<td><span id="contents"></span></td>
+		<td><span id="jyushinn"></span></td>
+		<td><span id="byoumei"></span></td>
+		<td><span id="chi"></span></td>
+		<td><span id="tanntoumei"></span></td>
+	</tr>
+</tbody>
+</table>
+</div>
+
+<div style="position:absolute;font-family:Arial Black;color:cornflowerblue;font-size:25pt;margin-left:10;margin-top:420">Helper for Human 2000</div>
+
+<script type="text/vbscript">
+<!--
+option explicit
+dim patternstring,selnode,ichistring,ichistring2
+dim ichinode,ichinode2,i,xx,yy
+dim main_name,col
+dim kazokustring,kazokunode,namae
+dim timer1,zokugarastring,allNo
+dim zokugaranode,hannteiNo
+dim xmldoc,banngou,nameGazo()
+
+sub window_onload()
+	hannteiNo=0
+	set xmldoc=createObject("Microsoft.XMLDom")
+	xmldoc.async=false
+	xmldoc.load("sample45.xml")
+	call cyuusyutu()
+end sub
+
+sub cyuusyutu()
+ 	'sample45.xml文書から要素「namae」の内容を取り出す．
+
+	patternstring="family/setai/namae"
+ 	 set selnode=xmldoc.selectNodes(patternstring)
+	if selnode.length>=0 then
+		redim nameGazo(selnode.length)
+		for i=0 to selnode.length-1
+			namae=namae & "<div style='cursor:hand' id='namaeMenu" & i & "'" & " onclick='changecolor(" & i & ")'>" & selnode(i).text & "</div>"
+			nameGazo(i)=selnode(i).getAttribute("gazo")
+		next
+			text1.innerHTML=namae
+	else
+		msgbox "データなし！"
+		exit sub
+	end if
+ 
+end sub
+
+sub changecolor(allNo)
+	'名前をクリックした時の背景の色
+	for i=0 to selnode.length-1
+		document.all("namaeMenu" & i).style.backgroundColor="white"
+	next
+		document.all("namaeMenu" & allNo).style.backgroundColor="lightpink"
+		window.clearinterval(timer1)
+		timer1=window.setinterval("blink()",30)
+
+		'クリックした名前を変数main_nameに格納する．
+		main_name=document.all("namaeMenu" & allNo).innerText
+		call maru_move(allNo)
+		call kazoku()
+		call jyoutai()
+end sub
+
+sub jyoutai()
+	dim jyoutaistring
+	dim jyoutainode
+
+	'選択された名前に一致する内容を検索し，それぞれの項目を表示する．
+
+	jyoutaistring="//setai[namae='" & main_name & "']/jyoukyou/nennrei"
+
+	set jyoutainode=xmldoc.selectNodes(jyoutaistring)
+	age.innerHTML=jyoutainode(0).text
+
+	jyoutaistring="//setai[namae='" & main_name & "']/jyoukyou/jusho"
+
+	set jyoutainode=xmldoc.selectNodes(jyoutaistring)
+	address.innerHTML=jyoutainode(0).text
+
+	jyoutaistring="//setai[namae='" & main_name & "']/jyoukyou/naiyo"
+	set jyoutainode=xmldoc.selectNodes(jyoutaistring)
+	contents.innerHTML=jyoutainode(0).text
+
+	jyoutaistring="//setai[namae='" & main_name & "']/jyoukyou/jushinka"
+	set jyoutainode=xmldoc.selectNodes(jyoutaistring)
+	jyushinn.innerHTML=jyoutainode(0).text
+
+	jyoutaistring="//setai[namae='" & main_name & "']/jyoukyou/kiousho"
+	set jyoutainode=xmldoc.selectNodes(jyoutaistring)
+	byoumei.innerHTML=jyoutainode(0).text
+
+	jyoutaistring="//setai[namae='" & main_name & "']/jyoukyou/blood"
+	set jyoutainode=xmldoc.selectNodes(jyoutaistring)
+	chi.innerHTML=jyoutainode(0).text
+
+	jyoutaistring="//setai[namae='" & main_name & "']/jyoukyou/tantou"
+	set jyoutainode=xmldoc.selectNodes(jyoutaistring)
+	tanntoumei.innerHTML=jyoutainode(0).text
+end sub
+
+'指定された名前に該当する地図上の位置に，●を移動する．
+'同時に名前に該当する人物の画像を表示する．
+sub maru_move(banngou)
+	personalImage.style.visibility="visible"
+	personalImage.src=nameGazo(banngou)
+	ichistring="family/setai[namae='" & main_name & "']/margintop"
+	ichistring2="family/setai[namae='" & main_name & "']/marginleft"
+
+   	set ichinode=xmldoc.selectNodes(ichistring)
+	set ichinode2=xmldoc.selectNodes(ichistring2)
+    
+	if ichinode.length>=0 and ichinode2.length>=0 then
+		yy=ichinode(0).text
+		xx=ichinode2(0).text
+	else
+		exit sub
+	end if
+		maru.style.margintop=yy
+		maru.style.marginleft=xx
+		personalImage.style.margintop=yy-10
+		personalImage.style.marginleft=xx+20
+			
+end sub
+
+sub kazoku()
+	dim myRow
+	dim myCell1
+	dim myCell2
+	dim myCell01
+	dim myCell02
+	dim myKoumoku1
+	dim myKoumoku2
+	dim myZokugara
+	dim myName
+
+	'表が形成されているかどうかをallNOの値で判別している．
+	'表が形成されていたら一度全ての行を削除する．
+	
+	if hannteiNo=2525 then
+		for i=0 to zokugaranode.length
+			myTable.deleteRow(0)
+		next
+	end if	
+	
+	'TABLEに新しい行（TR）を作成し、rowsコレクションに追加する．
+	'-1 はinsertRowのデフォルト値で、trをcellsコレクションの最後に追加する．
+
+	set myRow=myTable.insertRow(-1)
+
+	'それぞれのテーブルに関する要素を生成し、またその内容を生成する．
+	set myCell1=document.createElement("th")
+	set myCell2=document.createElement("th")
+
+	set myKoumoku1=document.createTextNode("続柄")
+	set myKoumoku2=document.createTextNode("名前")
+
+	'生成した要素に、内容を追加する．
+	myCell1.appendChild(myKoumoku1)
+	myCell2.appendChild(myKoumoku2)
+
+	'それぞれの内容を追加した要素を、今度は行に追加する．
+	myRow.appendChild(myCell1)
+	myRow.appendChild(myCell2)
+ 		
+	'各タグの内容を予め全て動的な配列変数に格納しておく．
+	kazokustring="family/setai[namae='" & main_name & "']/kazoku/jyuuninn/namae"
+	set kazokunode=xmldoc.selectNodes(kazokustring)
+		
+	zokugarastring="family/setai[namae='" & main_name & "']/kazoku/jyuuninn/zokugara"
+    set zokugaranode=xmldoc.selectNodes(zokugarastring)
+ 	
+	'ノードの個数分、td要素やその内容を生成し行に追加していく．	
+	for i=0 to kazokunode.length-1
+			
+		set myRow=myTable.insertRow(-1)
+		set myCell01=document.createElement("td")
+		set myCell02=document.createElement("td")
+		
+		set myZokugara=document.createTextNode(zokugaranode(i).text)
+		set myName=document.createTextNode(kazokunode(i).text)
+
+		myCell01.appendChild(myZokugara)
+		myCell02.appendChild(myName)
+
+		myRow.appendChild(myCell01)
+		myRow.appendChild(myCell02)
+	next
+
+		'この番号で画面上に表が生成されているかどうかを判別する。
+		hannteiNo=2525
+
+end sub
+
+'地図上で●が点滅する処理。
+sub blink()
+	select case col
+		case 1
+			maru.style.color="yellow"
+		case 2
+			maru.style.color="red"
+		case else
+			col=0
+	end select
+			col=col+1
+end sub
+
+-->
+</script>
+</body>
+</html>

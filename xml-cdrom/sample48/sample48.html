@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html lang="ja">
+<head>
+<title>Sample48</title>
+<style type="text/css">
+<!--
+button{font-size:12pt;font-family:Arial Black;width:150;}
+-->
+</style>
+<script type="text/vbscript">
+<!--
+option explicit
+dim xmldoc,naiyouNode
+dim i,sourcefile
+dim rootNode,xmlfile
+sub window_onload()
+	xmlSource.value=""
+
+	'XML DOMオブジェクトを使えるようにする（お約束）．
+	set xmldoc=createObject("Microsoft.XMLDom")
+	xmldoc.async=false
+
+	'100個までのXMLファイルを読み込み可能とする．
+	for i=1 to 100
+		xmldoc.load("nippou" & i & ".xml")
+
+		'要素「内容」があるかどうかを判定し，「内容」がなければ，そこで
+		'読み込みをStopする．
+		set naiyouNode=xmldoc.getElementsByTagName("内容")
+		if naiyouNode.length<=0 then exit for
+
+		'ルート要素を取得する．
+		set rootNode=xmldoc.documentElement
+
+		'XML文書の最初の子ノードのリストを取得する．
+		set xmlfile=xmldoc.childNodes.item(1).childNodes.item(0)
+		
+		'変数sourcefileに「最初の子ノードのリスト」格納する．
+		sourcefile=sourcefile & xmlfile.xml & chr(13) & chr(13)
+	next
+		
+		'変数sourcefileの先頭にXMLのバージョンを付け加える．
+		xmlSource.value= "<?xml version=" & chr(34) & "1.0" & chr(34) & "?>" & chr(13) & "<" & rootNode.nodeName & ">" & chr(13) & sourcefile & "</" & rootNode.nodeName & ">"
+
+end sub
+
+sub okGo()
+	dim xmldoc2,stylesheet,mado
+
+	set xmldoc2=createObject("Microsoft.XMLDom")
+	set stylesheet=createObject("Microsoft.XMLDom")
+	
+	stylesheet.async=false
+	xmldoc2.async=false
+	stylesheet.load("sample48.xsl")
+	xmldoc2.loadXML(xmlSource.value)
+	
+	'テキストエリア内に表示されているXMLソースと，XSLファイルを関連付けて，
+	'スタイルを持ったXML文書を新しいウィンドウに表示させている．
+	
+	set mado=window.open("")
+	mado.document.write(xmldoc2.transformNode(stylesheet))
+end sub
+
+-->
+</script>
+</head>
+<body>
+<span style="font-size:11pt">複数のXMLファイルを，一つにまとめて，下記のテキストエリア内に表示しています．<br>タグはそのままで，タグで挟まれた内容を修正して，OKボタンをクリックしてください．</span>
+<textarea id="xmlSource" cols="100" rows="30"></textarea><br>
+<button id="button1" onclick="okGo()">OK</button>
+</body>
+</html>

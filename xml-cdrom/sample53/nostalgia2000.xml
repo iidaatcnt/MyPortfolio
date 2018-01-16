@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml:stylesheet type="text/xsl" href="nos2000.xsl"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" xmlns:kyss="http://user.shikoku.ne.jp/kyss/" lang="ja">
+
+<head>
+<title>Nostalgia2000</title>
+
+<!--*******************管理情報・固定*******************-->
+
+<kyss:管理情報>
+  <kyss:制作年>1999</kyss:制作年>
+  <kyss:制作月>08</kyss:制作月>
+  <kyss:制作日>01</kyss:制作日>
+  <kyss:種別>コンテンツ</kyss:種別>
+  <kyss:ルビ>ノスタルジア</kyss:ルビ>
+  <kyss:コーナタイトル>郷愁（目次ページ）</kyss:コーナタイトル>
+  <kyss:コンテンツタイトル>Nostalgia2000</kyss:コンテンツタイトル>
+  <kyss:キーワード>VML</kyss:キーワード>
+  <kyss:ページ数>01</kyss:ページ数>
+  <kyss:制作者>PROJECT KySS</kyss:制作者>
+</kyss:管理情報>
+
+</head>
+<body>
+
+<!--*******************グラフィックス*******************-->
+
+<kyss:背景>
+	<kyss:フィル>
+		<kyss:タイプ>gradient</kyss:タイプ>
+	</kyss:フィル>
+</kyss:背景>
+
+<!--*******************テクスト*******************-->
+<kyss:テクスト>
+
+<div>
+	<p>
+夏の残り火
+	</p>
+</div>
+</kyss:テクスト>
+
+</body>
+</html>

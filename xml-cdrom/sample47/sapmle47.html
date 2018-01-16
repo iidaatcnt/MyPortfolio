@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html lang="ja">
+<head>
+<title>Sample47</title>
+<style type="text/css">
+<!--
+.frame1{position:absolute;border-width:thick;border-style:double;border-color:gray;width:150;overflow:auto;font-size:11pt;padding:3;}
+.frame2{position:absolute;margin-top:0;margin-left:200;visibility:hidden;}
+th{paddig:3;background-color:silver;}
+td{font-family:ＭＳ Ｐ明朝,serif;font-size:11pt;line-height:15pt;padding:3;}
+
+-->
+</style>
+<script type="text/vbscript">
+<!--
+	option explicit
+	dim i,allNo
+	dim xmlNo
+	dim nennTukihi
+	dim nennTukihiNode
+	dim tanntouNode,honnbunnNode
+	dim nenn(),tanntou(),honnbunn()
+sub window_onload()
+		xmlNo=3
+		redim nenn(xmlNo)
+		redim tanntou(xmlNo)
+		redim honnbunn(xmlNo)
+	
+		'複数のXML文書から，それぞれの要素の内容を動的配列変数に格納する．
+		for i=1 to xmlNo
+			set nennTukihiNode=document.all("data" & i).getElementsByTagName("年月日")
+			set tanntouNode=document.all("data" & i).getElementsByTagName("担当者")
+			set honnbunnNode=document.all("data" & i).getElementsByTagName("本文")
+			nenn(i)=nennTukihiNode(0).text
+			tanntou(i)=tanntouNode(0).text
+			honnbunn(i)=honnbunnNode(0).text
+			nennTukihi=nennTukihi & "<div style='cursor:hand' id='tukiMenu" & i & "'" & " onclick='go(" & i & ")'>" & nennTukihiNode(0).text & "</div>"
+		next
+			tukihi.innerHTML=nennTukihi
+end sub
+
+sub go(allNo)
+	naiyou.style.visibility="visible"
+	for i=1 to xmlNo
+		document.all("tukiMenu" & i).style.backgroundColor="white"
+	next
+		document.all("tukiMenu" & allNo).style.backgroundColor="silver"
+
+		'マウスのクリックに応じて，変数allNoに対応する内容を表示する．
+		myDate.innerHTML=nenn(allNo)
+		myTanntou.innerHTML=tanntou(allNo)
+		myHonnbunn.innerHTML=honnbunn(allNo)
+end sub
+-->
+</script>
+</head>
+<body>
+
+<!--XML文書を読み込み，それぞれの文書にIDを持たせる-->
+<XML id="data1" src="nippou1.xml"></XML>
+<XML id="data2" src="nippou2.xml"></XML>
+<XML id="data3" src="nippou3.xml"></XML>
+<div id="tukihi" class="frame1"></div>
+<div id="naiyou" class="frame2">
+<table border="1">
+	<tr>
+	<th>年月日</th><td colspan="3"><span id="myDate"></span></td>
+	</tr>
+	<tr>
+	<th>担当者</th><td colspan="3"><span id="myTanntou"></span></td>
+	</tr>
+	<tr>
+	<th>本文</th><td style="width:150"><span id="myHonnbunn"></span></td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

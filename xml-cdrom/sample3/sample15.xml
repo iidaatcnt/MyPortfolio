@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml-stylesheet type="text/xsl" href="sample15.xsl"?>
+<全体>
+	<題名>Sample15</題名>
+	<本文>
+		文章の中に配置したイメージを表示しています．
+		<イラスト>gazou1.gif</イラスト>のように表示されます．
+	</本文>
+</全体>

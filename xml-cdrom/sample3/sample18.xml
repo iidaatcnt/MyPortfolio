@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml-stylesheet type="text/xsl" href="sample18.xsl"?>
+<全体>
+	<題名>Sample18</題名>
+	<図>
+		<図番>1</図番>
+		<イラスト>gazou1.gif</イラスト>
+	</図>
+	<図>
+		<図番>2</図番>
+		<イラスト>gazou2.gif</イラスト>
+	</図>
+	<図>
+		<図番>3</図番>
+		<イラスト>gazou3.gif</イラスト>
+	</図>
+</全体>

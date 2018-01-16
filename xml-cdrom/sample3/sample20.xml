@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml-stylesheet type="text/xsl" href="sample20.xsl"?>
+<vml>
+	<題名>Sample20</題名>
+	<oval>
+		<width>300</width>
+		<height>100</height>
+		<fillcolor>silver</fillcolor>
+		<marginTop>10</marginTop>
+		<marginLeft>10</marginLeft>
+		<position>absolute</position>
+	</oval>
+
+	<oval>
+		<width>50</width>
+		<height>20</height>
+		<fillcolor>white</fillcolor>
+		<marginTop>100</marginTop>
+		<marginLeft>200</marginLeft>
+		<position>absolute</position>
+	</oval>
+
+	<oval>
+		<width>30</width>
+		<height>10</height>
+		<fillcolor>white</fillcolor>
+		<marginTop>115</marginTop>
+		<marginLeft>220</marginLeft>
+		<position>absolute</position>
+	</oval>
+
+	<oval>
+		<width>20</width>
+		<height>7</height>
+		<fillcolor>white</fillcolor>
+		<marginTop>125</marginTop>
+		<marginLeft>230</marginLeft>
+		<position>absolute</position>
+	</oval>
+</vml>

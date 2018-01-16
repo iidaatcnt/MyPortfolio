@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml-stylesheet type="text/xsl" href="sample32.xsl"?>
+<全体>
+	<題名>Sample32</題名>
+	<本文>
+	<リンク>
+		<リンク先 url="http://www.foobar.co.jp/">foobar Corporation</リンク先>
+	</リンク>
+	<リンク>
+		<リンク先 url="http://www.cqpub.co.jp/">CQ Publishing</リンク先>
+	</リンク>
+	<リンク>
+		<リンク先 url="http://user.shikoku.ne.jp/kyss/">PROJECT KySS</リンク先>
+	</リンク>
+	</本文>
+</全体>
+

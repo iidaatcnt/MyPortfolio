@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html lang="ja">
+<head>
+<title>Sample42</title>
+<style type="text/css">
+<!--
+.style1{padding:6;position:absolute;width:150;
+height:150;border-width:thick;border-style:double;
+overflow:auto;font-family:"ＭＳ Ｐ明朝",serif;font-size:12pt;}
+table{border:solid 1pt black;position:absolute;margin-left:200	;}
+th{border:solid 1pt gray;padding:5;background-color:silver;}
+td{border:solid 1pt gray;padding:5;}
+-->
+</style>
+<script type="text/vbscript">
+<!--
+option explicit
+dim xmldoc
+dim banngou
+dim namaeNode
+dim namae
+dim i,allNo
+dim dummyNo
+dim searchName,patternstring,shimeistring,fukennstring
+dim addressstring,dennwastring,kinngakustring,tukistring
+dim noNode,shimeiNode,fukennNode,addressNode,dennwaNode
+dim kinngakuNode,tukiNode
+dim no,shimei,fukenn,address,dennwa,kinngaku,tuki
+
+sub window_onload()
+	dummyNo=0
+	set xmldoc=createObject("Microsoft.XMLDom")
+	xmldoc.async=false
+
+	'xmlファイルが不特定数のため、ここでは1000のファイル迄を読み込むと仮定する。
+	for i=1 to 1000
+		xmldoc.load("dummy" & i & ".xml")
+		set namaeNode=xmldoc.getElementsByTagName("氏名")
+		'xmlファイルがあればdummyNoを加算する。
+		if namaeNode.length>0 then dummyNo=dummyNo+1
+		if namaeNode.length<=0 then exit for
+		namae=namae & "<div style='cursor:hand' id=" & "'" & "namaeMenu" & i-1 & "'" & "onclick=" & "'" & "go(" & i-1 & ")'" & ">" & namaeNode(0).text & "</div>"
+	next
+		'複数のxmlファイルから氏名の要素内容だけを取り出して表示する。
+		
+		namaeBox.innerHTML=namae
+end sub
+
+sub go(allNo)
+	'氏名をクリックした時点の背景の色処理。
+	for i=0 to dummyNo-1
+		document.all("namaeMenu" & i).style.backgroundcolor="white"
+	next
+		document.all("namaeMenu" & allNo).style.backgroundcolor="silver"
+		'クリックした氏名の内容を変数searchNameに格納する。
+		searchName=document.all("namaeMenu" & allNo).innerText
+		call NameSenntaku(searchName)
+end sub
+
+sub NameSenntaku(searchName)
+
+	'氏名に合致する要素を抽出するという条件を指定する。
+
+	patternstring="全体/顧客情報[氏名='" & searchName & "']/お客様番号"
+	shimeistring="全体/顧客情報[氏名='" & searchName & "']/氏名"
+	fukennstring="全体/顧客情報[氏名='" & searchName & "']/住所/@都道府県"
+	addressstring="全体/顧客情報[氏名='" & searchName & "']/住所"
+	dennwastring="全体/顧客情報[氏名='" & searchName & "']/電話"
+
+	kinngakustring="全体/顧客情報[氏名='" & searchName & "']/お買い上げ金額"
+	tukistring="全体/顧客情報[氏名='" & searchName & "']/お買い上げ金額/@月"
+	
+	for i=1 to dummyNo
+		'それぞれのxmlファイルを読み込み、指定された条件で、それぞれの要素の
+		'内容を取得する。
+		xmldoc.load("dummy" & i & ".xml")
+		set noNode=xmldoc.selectNodes(patternstring)
+		if noNode.length>0 then	no=noNode(0).text
+	
+		set shimeiNode=xmldoc.selectNodes(shimeistring)
+		if shimeiNode.length>0 then shimei=shimeiNode(0).text
+
+		set fukennNode=xmldoc.selectNodes(fukennstring)
+		if fukennNode.length>0 then fukenn=fukennNode(0).text
+
+		set addressNode=xmldoc.selectNodes(addressstring)
+		if addressNode.length>0 then address=addressNode(0).text
+
+		set dennwaNode=xmldoc.selectNodes(dennwastring)
+		if dennwaNode.length>0 then dennwa=dennwaNode(0).text
+
+		set kinngakuNode=xmldoc.selectNodes(kinngakustring)
+		if kinngakuNode.length>0 then kinngaku=kinngakuNode(0).text
+
+		set tukiNode=xmldoc.selectNodes(tukistring)
+		if tukiNode.length>0 then tuki=tukiNode(0).text
+
+	next
+		'取得した要素の内容を表示する。
+		 noTable.innerHTML=no
+		 namaeTable.innerHTML=shimei
+		 fukennTable.innerHTML=fukenn
+		 addressTable.innerHTML=address
+		 dennwaTable.innerHTML=dennwa
+		 kinngakuTable.innerHTML=formatNumber(kinngaku,0)
+ 		 tukiTable.innerHTML=tuki
+		 
+end sub
+-->
+</script>
+</head>
+<body>
+<div id="namaeBox" class="style1"></div>
+<table>
+<tr>
+	<th>番号</th><th>氏名</th><th>都道府県</th>
+	<th>住所</th><th>電話</th><th>購入金額</th><th>購入月</th>
+</tr>
+<tr>
+	<td><span id="noTable"></span></td>
+	<td><span id="namaeTable"></span></td>
+	<td><span id="fukennTable"></span></td>
+	<td><span id="addressTable"></span></td>
+	<td><span id="dennwaTable"></span></td>
+	<td style="text-align:right"><span id="kinngakuTable"></span></td>
+	<td><span id="tukiTable"></span></td>
+</tr>
+</table>
+</body>
+</html>

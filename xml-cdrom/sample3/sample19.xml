@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml-stylesheet type="text/xsl" href="sample19.xsl"?>
+<vml>
+	<題名>Sample19</題名>
+	<rect>
+		<width>250</width>
+		<height>230</height>
+		<fillcolor>silver</fillcolor>
+		<strokecolor>black</strokecolor>
+		<strokeweight>5pt</strokeweight>
+	</rect>
+
+	<fill>
+		<type>pattern</type>
+		<src>pattern.gif</src>
+	</fill>
+</vml>

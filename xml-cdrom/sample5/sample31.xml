@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml-stylesheet type="text/xsl" href="sample31.xsl"?>
+<全体>
+	<題名>Sample31</題名>
+	<図>
+		<リンク>
+			<リンク先 url="http://user.shikoku.ne.jp/kyss/">gazou1.gif</リンク先>
+		</リンク>
+		<リンク>
+			<リンク先 url="http://www.foobar.co.jp/">gazou2.gif</リンク先>
+		</リンク>
+	</図>
+</全体>
+
