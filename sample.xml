@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="sample_pi.xsl"?>
+<!--
+<PackageInsert xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="sample_pi.xsd">
+<PackageInsert xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+-->
+<PackageInsert>
+  <!--製品名-->
+  <Name>ヨクナール注</Name>
+  <!--改訂年月日-->
+  <RevisionDate>2018年1月18日改訂</RevisionDate>
+  <!--警告-->
+  <Warning>本剤の投与にあたっては，本剤の必要性を慎重に検討すること。</Warning>
+  <!--用法・用量-->
+  <Dosage>ヨクナル硫酸ナトリウムとして、通常成人1回20～50mgを1日1回静脈内又は筋肉内注射する。</Dosage>
+  <!--製造販売-->
+  <ManufactureAndSale>全国製薬株式会社</ManufactureAndSale>
+</PackageInsert>
