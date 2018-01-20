@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Shift_JIS" ?> 
+<?xml-stylesheet type="text/xsl" href="sample.xsl"?>
+ <PAGE>
+   <EMPLOYEES>
+     <EMPLOYEE>
+       <EMPNO>1</EMPNO> 
+       <ENAME>佐野力</ENAME> 
+       <JOB>President</JOB> 
+       <HIREDATE>1990-04-01</HIREDATE> 
+       <SAL>10000</SAL> 
+       <DEPTNO>10</DEPTNO> 
+     </EMPLOYEE>
+     <EMPLOYEE>
+       <EMPNO>50</EMPNO> 
+       <ENAME>高橋敦子</ENAME> 
+       <JOB>Director</JOB> 
+       <MGR>1</MGR> 
+       <HIREDATE>1991-04-01</HIREDATE> 
+       <SAL>6000</SAL> 
+       <DEPTNO>30</DEPTNO> 
+     </EMPLOYEE>
+     <EMPLOYEE>
+       <EMPNO>1401</EMPNO> 
+       <ENAME>小山尚彦</ENAME> 
+       <JOB>Analyst</JOB> 
+       <MGR>50</MGR> 
+       <HIREDATE>1999-09-01</HIREDATE> 
+       <SAL>3000</SAL> 
+       <DEPTNO>30</DEPTNO> 
+     </EMPLOYEE>
+   </EMPLOYEES>
+ </PAGE>
