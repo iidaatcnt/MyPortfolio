@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<?xml-stylesheet type="text/xsl" href="hello.xsl"?>
+<hello-world>   
+    <doc-title>実験タイトル</doc-title>
+    <doc-body>
+        <greeter>An XSLT Programmer</greeter>   
+        <greeting>こんにちは、世界！</greeting>
+        <greeting>はじめまして、世界！</greeting>
+        <greeting>さようなら、世界！</greeting>
+    </doc-body>
+</hello-world>
+
