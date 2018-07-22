@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<?xml-stylesheet type="text/xsl" href="StyleDesign.xsl"?>
+<page>
+  <class>
+    <students>
+      <no>1</no> 
+      <name>山田太郎</name> 
+      <age>13</age> 
+      <tel>000-0000-0004</tel> 
+    </students>
+    <students>
+      <no>50</no> 
+      <name>井上智也</name> 
+      <age>54</age> 
+      <tel>555-2555-5555</tel> 
+    </students>
+    <students>
+      <no>1401</no> 
+      <name>塩田よし子</name> 
+      <age>32</age>
+      <tel>555-7878-4444</tel>
+    </students>
+  </class>
+</page>
