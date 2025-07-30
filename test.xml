@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="Shift_JIS" ?>
-<?xml-stylesheet href="test.xsl" type="text/xsl" ?>
-<article>
-  <title>XSLT入門</title>
-  <paragraph>この記事はXSLTについて理解していただくことを目的としたものです。</paragraph>
-</article>
