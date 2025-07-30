@@ -1,32 +1,19 @@
-# README #
+# MyPortfolio - 個人学習成果とコードスニペット集
 
-This README would normally document whatever steps are necessary to get your application up and running.
+このリポジトリは、様々なプログラミング言語や技術に関する個人的な学習成果やコードスニペットをまとめたものです。
 
-### What is this repository for? ###
+## 含まれるコンテンツ
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+-   **mylogapp:** Djangoで開発されたWebアプリケーションのサンプル。
+-   **snippets:** 各種プログラミング言語（Python, Awk, Bash, Perl, Cなど）のコードスニペット集。
+-   **xml_xsl:** XMLとXSLTの変換に関するサンプル集。
 
-### How do I get set up? ###
+## 整理状況
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+-   `omake`ディレクトリ（第三者画像）は削除されました。
+-   `cube-timer`ディレクトリは独立したリポジトリとして切り出されました。
+-   `python_snippet`ディレクトリは`snippets`ディレクトリにマージされ、言語ごとに整理されました。
 
-### Contribution guidelines ###
+## ライブデモ
 
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact# MyPortfolio
-
-## How to Use　WFOKF6WO4H.jpeg
-WFOKF6WO4H.jpeg WFOKF6WO4H.txt
+各プロジェクトのライブデモは、それぞれの独立したリポジトリまたはサブディレクトリの`index.html`をご確認ください。
